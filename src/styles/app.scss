@@ -171,6 +171,15 @@ body {
           cursor: pointer;
           box-shadow: 0 0 1px 2px $color-box-shadow;
           font-weight: 600;
+          transition: background-color 300ms ease;
+
+          &:hover {
+            background-color: #77a734;
+          }
+
+          &:active {
+            background-color: #557726;
+          }
         }
       }
     }
