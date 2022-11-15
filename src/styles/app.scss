@@ -1,0 +1,329 @@
+@import "./variables";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: url("../../public/background.jpg") no-repeat center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: "Roboto", sans-serif;
+}
+
+#App {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  place-items: center;
+
+  #big-title {
+    width: 60%;
+    height: 28vh;
+    max-height: 20em;
+    background: linear-gradient(
+      to right,
+      rgb(255, 255, 255, 0.8) 70%,
+      transparent,
+      transparent
+    );
+    position: absolute;
+    left: 0;
+    transform: translateY(-150px);
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    #title-container {
+      width: 70%;
+      display: inherit;
+      flex-direction: column;
+
+      #header-1 {
+        display: flex;
+        align-items: flex-end;
+        gap: 1em;
+
+        img {
+          height: 5em;
+        }
+
+        span {
+          font-style: italic;
+          font-weight: 400;
+          font-size: 2.5em;
+          line-height: 0.8;
+          color: $color-text-header;
+        }
+      }
+
+      #header-2 {
+        font-style: italic;
+        font-weight: 500;
+        font-size: 3.7em;
+        color: $primary-color;
+      }
+
+      #header-3 {
+        font-style: italic;
+        font-weight: 500;
+        font-size: 2.5em;
+        color: $color-text-header;
+      }
+    }
+  }
+
+  #section {
+    z-index: 2;
+    width: clamp(60vw, 70rem, 95%);
+    height: 8em;
+    border-radius: $border-radius-container;
+    background-color: $color-white;
+    position: absolute;
+    bottom: 5vh;
+    display: flex;
+    overflow: hidden;
+
+    #section-title {
+      width: 30%;
+      height: 100%;
+      display: inherit;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background-color: $primary-color;
+      color: $color-white;
+      position: relative;
+
+      &::after {
+        content: "";
+        height: 100%;
+        width: 8em;
+        scale: 1.65;
+        z-index: -1;
+        position: absolute;
+        right: 0;
+        rotate: 45deg;
+        transform: skew(20deg, 20deg);
+        background-color: $primary-color;
+      }
+
+      h1 {
+        font-weight: 700;
+      }
+
+      h3 {
+        font-weight: 400;
+      }
+    }
+
+    #section-body {
+      width: 70%;
+      display: inherit;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1em;
+
+      h2 {
+        color: $color-text-gray;
+
+        span {
+          color: $primary-color;
+        }
+      }
+
+      #input-button-container {
+        display: inherit;
+        gap: 0.5em;
+
+        input {
+          padding: 0.7em 1em;
+          outline: none;
+          border: 1px solid rgba(0, 0, 0, 0.3);
+          border-radius: $border-radius-input;
+          transition: border 200ms ease;
+
+          &::placeholder {
+            color: rgba(0, 0, 0, 0.3);
+            font-weight: 600;
+          }
+
+          &:hover {
+            border: 1px solid $primary-color;
+          }
+        }
+
+        button {
+          padding: 0.7em 1.5em;
+          outline: none;
+          border: none;
+          border-radius: $border-radius-input;
+          color: $color-white;
+          background-color: $primary-color;
+          cursor: pointer;
+          box-shadow: 0 0 1px 2px $color-box-shadow;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+
+/* Media Queries for 1500px screen sizes */
+@media only screen and (max-width: 1500px) {
+  #App {
+    #big-title {
+      width: 70%;
+
+      #title-container {
+        #header-2 {
+          font-size: 2.8em;
+        }
+
+        #header-3 {
+          font-size: 2.2em;
+        }
+      }
+    }
+  }
+}
+
+/* Media Queries for 1000px screen sizes */
+@media only screen and (max-width: 1000px) {
+  #App {
+    #big-title {
+      width: 90%;
+      justify-content: center;
+
+      #title-container {
+        #header-1 {
+          display: flex;
+          align-items: flex-end;
+          gap: 1em;
+
+          img {
+            height: 4em;
+          }
+
+          span {
+            font-style: italic;
+            font-weight: 400;
+            font-size: 2.3em;
+            line-height: 0.8;
+            color: $color-text-header;
+          }
+        }
+
+        #header-2 {
+          font-size: 2.3em;
+        }
+
+        #header-3 {
+          font-size: 1.7em;
+        }
+      }
+    }
+
+    #section {
+      display: flex;
+      flex-direction: column;
+      height: auto;
+
+      #section-title {
+        width: 100%;
+        padding: 1em;
+        height: auto;
+
+        &::after {
+          display: none;
+        }
+
+        h1 {
+          font-weight: 700;
+        }
+
+        h3 {
+          font-weight: 400;
+        }
+      }
+
+      #section-body {
+        padding: 1em 0em;
+        width: 100%;
+      }
+    }
+  }
+}
+
+/* Media Queries for 600px screen sizes */
+@media only screen and (max-width: 600px) {
+  #App {
+    #big-title {
+      width: 90%;
+      justify-content: center;
+
+      #title-container {
+        #header-1 {
+          display: flex;
+          align-items: flex-end;
+          gap: 0.3em;
+
+          img {
+            height: 2em;
+          }
+
+          span {
+            font-size: 1em;
+          }
+        }
+
+        #header-2 {
+          font-size: 1.4em;
+        }
+
+        #header-3 {
+          font-size: 1.2em;
+        }
+      }
+    }
+
+    #section {
+      #section-title {
+        h1 {
+          font-size: 1.3em;
+        }
+
+        h3 {
+          font-size: 0.8em;
+        }
+      }
+
+      #section-body {
+        padding: 1em 0em;
+        width: 100%;
+
+        h2 {
+          font-size: 0.8em;
+        }
+
+        #input-button-container {
+          display: flex;
+          flex-direction: column;
+          width: 80%;
+
+          input {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
